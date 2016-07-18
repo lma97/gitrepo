@@ -1,0 +1,92 @@
+/* Page.scss - Main Styles for Page
+ * Author: Lisa Maddock
+ *
+ * Designed for Mobile First
+ *
+ */
+
+.browser-update {
+	margin: 0.2em 0;
+	background: $gray-light;
+	padding: 0.2em 0;
+}
+
+.search-box {
+	margin-bottom: $margin-sm;
+
+	.inner {
+		background: $gray-bg;
+		text-align: center;
+		margin: $margin-sm 0 0 0;
+		padding: $padding-lg $padding-m;
+		@include border-radius(5px);
+
+		h1 {
+			margin-top: 0;
+		}
+		.input-group-btn .glyphicon {
+			top: 0;
+		}
+		.help-block {
+			font-size: $font-size-sm;
+			text-align: left;
+			margin-left: $margin-xs;
+		}
+	}
+}
+
+.loading-indicator {
+	display: block;
+	margin: 0 auto;
+}
+
+.no-results {
+	margin-top: $margin-m;
+}
+
+.results {
+	.repo-filter,
+	.description {
+		font-size: $font-size-sm;
+	}
+	.repo-filter {
+		padding: 0 $padding-xs;
+	}
+	.no-repos {
+		margin: 0;
+	}
+}
+
+.user-box {
+	padding: 10px 0 15px 0;
+
+	img {
+		float: left;
+		margin-right: $margin-sm;
+		height: 70px;
+		width: 70px;
+		@include border-radius(50px);
+		rgba(0,0,0,.2) 0 2px 3px
+	}
+	.details {
+		float: left;
+	}
+	h4 {
+		margin: 0;
+	}
+	.nick, .email, .location, .web {
+		font-size: $font-size-sm;
+	}
+	.glyphicon {
+		padding-right: 3px;
+	}
+}
+
+/* Tablets and up */
+@media screen and (min-width: $screen-sm) {
+	.results {
+		.description {
+			font-size: $font-size-base;
+		}
+	}
+}
