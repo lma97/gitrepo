@@ -14,6 +14,7 @@ angular.module('GitHubApp')
 
 		$scope.userNotFound = false;    //flag if valid user was found
 		$scope.repoNotFound = false;    //flag if user has repos
+		$scope.generalError = false;    //flag for general errors
 		$scope.loading = false;         //flag to control loading image during search
 
 		//user to search
@@ -27,6 +28,7 @@ angular.module('GitHubApp')
 				$scope.userRepoData = '';
 				$scope.userNotFound = false;
 				$scope.repoNotFound = false;
+				$scope.generalError = false;
 
 				if (newVal !== '') {
 					//we have a new value, get user data
@@ -59,7 +61,9 @@ angular.module('GitHubApp')
 					return $q.reject(response);
 				})
 				.catch(function(response) {
-					$scope.generalError = true;
+					if (!$scope.userNotFound) {
+						$scope.generalError = true;
+					}
 					return;
 				})
 				.finally(function(){

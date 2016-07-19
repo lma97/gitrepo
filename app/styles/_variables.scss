@@ -1,36 +1,27 @@
 // Colors
 $blue: #0077b3 !default;
-$red: #ea1a1a !default;
-$green: #64b220 !default;
-$black: #000000 !default;
-$white: #ffffff !default;
 $gray-dark: #777777 !default;
 $gray-light: #cccccc !default;
 $gray-bg: #eee !default;
 
-$text-default-color: #333;
-$link-default-color: $blue;
-$icon-default-color: $gray-dark;
+$text-default-color: #333 !default;
+$link-default-color: $blue !default;
+$icon-default-color: $gray-dark !default;
 
 // Border
-$border-color: #e3e3e3;
-$border-style: solid;
-$border-width: 1px;
-
+$border-color: #e3e3e3 !default;;
+$border-style: solid !default;
+$border-width: 1px !default;
 
 // Typography size
 $font-size-base: 14px !default;
 $font-size-xs: 10px !default;
 $font-size-sm: 12px !default;
-$font-size-lg: 16px !default;
-$font-size-lgr: 18px !default;
-$font-size-xl: 20px !default;
-$font-size-xxl: 22px !default;
-
-$font-size-h1: $font-size-xxl;
-$font-size-h2: $font-size-lg;
-$font-size-h3: $font-size-base;
-$font-size-icon: $font-size-lgr;
+$font-size-m: 16px !default;
+$font-size-lg: 18px !default;
+$font-size-lgr: 24px !default;
+$font-size-xl: 30px !default;
+$font-size-xxl: 36px !default;
 
 // Line Height
 $line-height-sm: 1.2 !default;

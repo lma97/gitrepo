@@ -4,14 +4,14 @@
 			<div class="inner">
 				<h1>GitHub Search </h1>
 				<p>Display respositories for a user</p>
-
+				<hello-world></hello-world>
 				<!-- Github User Search Form -->
 				<div class="input-group">
 					<input type="text" class="form-control" placeholder="Enter user to show repository"
-					       ng-model-options="{ debounce: 800 }"
-					       ng-model="userName">
+					       data-ng-model-options="{ debounce: 800 }"
+					       data-ng-model="userName">
 						<span class="input-group-btn">
-							<button class="btn btn-primary glyphicon glyphicon-search" type="button" ng-click="loadUser()"></button>
+							<button class="btn btn-primary glyphicon glyphicon-search" type="button" data-ng-click="loadUser()"></button>
 						</span>
 				</div>
 				<div class="help-block">eg. kibo007</div>
@@ -21,63 +21,66 @@
 </div>
 
 <!-- Show when loading -->
-<img ng-src="/images/spinner.svg" class="loading-indicator" ng-show="loading"/>
+<img data-ng-src="/images/spinner.svg" class="loading-indicator" data-ng-show="loading"/>
 
 <!-- Github User Search Results -->
-<div class="alert alert-warning no-results" ng-show="userNotFound" role="alert">No user was found for {{userName}}</div>
-<div class="results" ng-show="userData">
+<div class="alert alert-warning no-results" data-ng-show="userNotFound" role="alert">No user was found for &quot;{{userName}}&quot;.</div>
+<div class="alert alert-warning error-msg" data-ng-show="generalError" role="alert">The service is unavailable at this time, please try again later.</div>
+<div class="results" data-ng-show="userData">
 	<div class="row">
 		<div class="col-xs-12">
 			<h4>Result: </h4>
+			<!-- User Profile -->
 			<div class="user-box clearfix">
-				<img ng-src="{{userData.avatar_url}}" ng-show="userData.avatar_url" alt="User Profile Photo"/>
-
+				<a data-ng-href="{{userData.html_url}}">
+					<img data-ng-src="{{userData.avatar_url}}" data-ng-show="userData.avatar_url" alt="User Profile Photo"/>
+				</a>
 				<div class="details">
 					<h4>{{userData.name}}</h4>
 
 					<div class="nick">{{userData.login}}</div>
-					<div class="location" ng-show="userData.location != null">
+					<div class="location" data-ng-show="userData.location != null">
 						<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>{{userData.location}}
 					</div>
-					<div class="email" ng-show="userData.email != null">
+					<div class="email" data-ng-show="userData.email != null">
 						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a
-							ng-href="mailto:{{userData.email}}">{{userData.email}}</a>
+							data-ng-href="mailto:{{userData.email}}">{{userData.email}}</a>
 					</div>
-					<div class="web" ng-show="userData.blog != null">
+					<div class="web" data-ng-show="userData.blog != null">
 						<span class="glyphicon glyphicon-globe" aria-hidden="true"></span><a
-							ng-href="{{userData.blog}}">{{userData.blog}}</a>
+							data-ng-href="{{userData.blog}}">{{userData.blog}}</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Repo List -->
+	<!-- User Repo List -->
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel panel-default repo-list">
 				<div class="panel-heading">GitHub Repositories <span
 						class="label label-info">{{ userRepoData.length }}</span> |
-					<input type="text" class="repo-filter" ng-model="searchText" placeholder="Filter repositories">
+					<input type="text" class="repo-filter" data-ng-model="searchText" placeholder="Filter repositories">
 				</div>
 
-				<div class="alert alert-warning no-repos" ng-show="repoNotFound" role="alert">No Repositories exist for {{userName}}</div>
+				<div class="alert alert-warning no-repos" data-ng-show="repoNotFound" role="alert">No Repositories exist for &quot;{{userName}}&quot;</div>
 
 				<ul class="list-group">
-					<!-- interate over $scope.userRepoData -->
-					<li class="list-group-item" ng-repeat="repo in userRepoData | filter:searchText">
+					<!-- iterate over repositories -->
+					<li class="list-group-item" data-ng-repeat="repo in userRepoData | filter:searchText">
 						<div class="row">
 							<div class="col-sm-9">
-								<a class="repo-link" ng-href={{repo.html_url}} ng-bind="repo.name"></a>
+								<a class="repo-link" data-ng-href={{repo.html_url}} data-ng-bind="repo.name"></a>
 
-								<div class="description" ng-bind="repo.description"></div>
+								<div class="description" data-ng-bind="repo.description"></div>
 							</div>
 							<div class="col-sm-3">
 								<div>
 									<small>Updated on: {{ repo.updated_at | date:'mediumDate'}}</small>
 								</div>
 								<div>
-									<small>Size: <span ng-bind="repo.size"></span>kb</small>
+									<small>Size: <span data-ng-bind="repo.size"></span>kb</small>
 								</div>
 							</div>
 						</div>
